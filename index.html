@@ -436,7 +436,7 @@
             <input type="checkbox" id="Херсонская область"><label for="Днепропетровская область">Херсонская область</label>
         </div>
         <div>
-            <input type="checkbox" id="А. Р Крым"><label for="А. Р Крым">А. Р Крым</label>
+            <input type="checkbox" id="А.Р Крым"><label for="А.Р Крым">А.Р Крым</label>
         </div>
         <div>
             <input type="checkbox" id="Одесская область"><label for="Одесская область">Одесская область</label>
@@ -464,12 +464,6 @@
         </div>
         <div>
             <input type="checkbox" id="Львовская область"><label for="Львовская область">Львовская область</label>
-        </div>
-        <div>
-            <input type="checkbox" id="Днепропетровская область"><label for="Днепропетровская область">Днепропетровская область</label>
-        </div>
-        <div>
-            <input type="checkbox" id="Днепропетровская область"><label for="Днепропетровская область">Днепропетровская область</label>
         </div>
     
 
@@ -1095,7 +1089,7 @@ fetch('trevoga.json')
         });
 
         // Автоматически активируем "Луганская область" и "А. Р Крым"
-        const autoActivateRegions = ["Луганская область", "А. Р Крым"];
+        const autoActivateRegions = ["Луганская область", "А.Р Крым"];
         
         document.querySelectorAll('#alert-menu input[type=checkbox]').forEach(checkbox => {
             checkbox.onchange = function() {
