@@ -411,8 +411,7 @@
             <div>
                 <input type="checkbox" id="Киевская область"><label for="Киевская область">Киевская область</label>
             </div>
-        </div>
-        <div>
+<div>
             <input type="checkbox" id="Житомирская область"><label for="Житомирская область">Житомирская область</label>
         </div>
         <div>
@@ -472,6 +471,7 @@
         <div>
             <input type="checkbox" id="Днепропетровская область"><label for="Днепропетровская область">Днепропетровская область</label>
         </div>
+    
 
     </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -1083,38 +1083,48 @@ fetch("front.json")
   .catch(error => console.error("Ошибка загрузки JSON:", error));
 
   let polygons = {};
-        let menuVisible = false;
+let menuVisible = false;
 
-        fetch('trevoga.json')
-            .then(response => response.json())
-            .then(geojsonData => {
-                let regions = {};
-                geojsonData.features.forEach(feature => {
-                    let name = feature.properties.name;
-                    regions[name] = feature;
-                });
+fetch('trevoga.json')
+    .then(response => response.json())
+    .then(geojsonData => {
+        let regions = {};
+        geojsonData.features.forEach(feature => {
+            let name = feature.properties.name;
+            regions[name] = feature;
+        });
 
-                document.querySelectorAll('#alert-menu input[type=checkbox]').forEach(checkbox => {
-                    checkbox.onchange = function() {
-                        let region = checkbox.id;
-                        if (checkbox.checked && regions[region]) {
-                            let layer = L.geoJSON(regions[region], {
-                                style: { color: 'red', fillColor: 'red', fillOpacity: 0.1, weight: 0.6 }
-                            }).addTo(map);
-                            polygons[region] = layer;
-                        } else if (polygons[region]) {
-                            map.removeLayer(polygons[region]);
-                            delete polygons[region];
-                        }
-                    };
-                });
-            });
+        // Автоматически активируем "Луганская область" и "А. Р Крым"
+        const autoActivateRegions = ["Луганская область", "А. Р Крым"];
+        
+        document.querySelectorAll('#alert-menu input[type=checkbox]').forEach(checkbox => {
+            checkbox.onchange = function() {
+                let region = checkbox.id;
+                if (checkbox.checked && regions[region]) {
+                    let layer = L.geoJSON(regions[region], {
+                        style: { color: 'red', fillColor: 'red', fillOpacity: 0.1, weight: 0.6 }
+                    }).addTo(map);
+                    polygons[region] = layer;
+                } else if (polygons[region]) {
+                    map.removeLayer(polygons[region]);
+                    delete polygons[region];
+                }
+            };
 
-        document.getElementById('alert-button').onclick = function() {
-            menuVisible = !menuVisible;
-            document.getElementById('alert-menu').style.display = menuVisible ? 'block' : 'none';
-        };
-        const iconElement = document.querySelector('.icon-container .icon');
+            // Автоматически ставим галочку для нужных регионов и активируем их
+            if (autoActivateRegions.includes(checkbox.id)) {
+                checkbox.checked = true;
+                checkbox.onchange();  // Вызываем onchange вручную для активированного региона
+            }
+        });
+    });
+
+document.getElementById('alert-button').onclick = function() {
+    menuVisible = !menuVisible;
+    document.getElementById('alert-menu').style.display = menuVisible ? 'block' : 'none';
+};
+
+const iconElement = document.querySelector('.icon-container .icon');
 
 
     </script>
