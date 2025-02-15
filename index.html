@@ -465,7 +465,12 @@
         <div>
             <input type="checkbox" id="Львовская область"><label for="Львовская область">Львовская область</label>
         </div>
-    
+        <div>
+            <input type="checkbox" id="Запорожская область"><label for="Запорожская область">Запорожская область</label>
+        </div>
+        <div>
+            <input type="checkbox" id="По всей территории"><label for="По всей территории">По всей территории</label>
+        </div>
 
     </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -1089,7 +1094,7 @@ fetch('trevoga.json')
         });
 
         // Автоматически активируем "Луганская область" и "А. Р Крым"
-        const autoActivateRegions = ["Луганская область", "А.Р Крым"];
+        const autoActivateRegions = ["Луганская область", "А. Р Крым"];
         
         document.querySelectorAll('#alert-menu input[type=checkbox]').forEach(checkbox => {
             checkbox.onchange = function() {
@@ -1111,6 +1116,17 @@ fetch('trevoga.json')
                 checkbox.onchange();  // Вызываем onchange вручную для активированного региона
             }
         });
+
+        // Обработчик для чекбокса "По всей территории"
+        document.getElementById('По всей территории').onchange = function() {
+            let isChecked = this.checked;
+            document.querySelectorAll('#alert-menu input[type=checkbox]').forEach(checkbox => {
+                if (checkbox.id !== 'По всей территории') {
+                    checkbox.checked = isChecked;
+                    checkbox.onchange();  // Активируем или деактивируем регионы в зависимости от состояния
+                }
+            });
+        };
     });
 
 document.getElementById('alert-button').onclick = function() {
