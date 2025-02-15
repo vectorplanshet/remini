@@ -391,13 +391,13 @@
         <div id="alert-menu">
             <h3>Дать тревогу</h3>
             <div>
-                <input type="checkbox" id="Сумская область"><label for="Гомельская область">Сумская область</label>
+                <input type="checkbox" id="Сумская область"><label for="Сумская область">Сумская область</label>
             </div>
             <div>
-                <input type="checkbox" id="Брестская область"><label for="Брестская область">Брестская область</label>
+                <input type="checkbox" id="г.Киев"><label for="г.Киев">г.Киев</label>
             </div>
             <div>
-                <input type="checkbox" id="Минск"><label for="Минск">Минск</label>
+                <input type="checkbox" id="Харьковская область"><label for="Харьковская область">Харьковская область</label>
             </div>
             <div>
                 <input type="checkbox" id="Минская область"><label for="Минская область">Минская область</label>
@@ -1039,7 +1039,7 @@ fetch("front.json")
                         let region = checkbox.id;
                         if (checkbox.checked && regions[region]) {
                             let layer = L.geoJSON(regions[region], {
-                                style: { color: 'red', fillColor: 'red', fillOpacity: 0.07, weight: 0.5 }
+                                style: { color: 'red', fillColor: 'red', fillOpacity: 0.1, weight: 0.6 }
                             }).addTo(map);
                             polygons[region] = layer;
                         } else if (polygons[region]) {
