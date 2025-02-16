@@ -755,15 +755,14 @@ map.on("geosearch/showlocation", async function (e) {
             let shiftedClass = ''
             let iconSize = ''
 
-            // Условия для выбора иконки в зависимости от скорости
-            if (speed >= 120 && speed <= 121) {
+          // Условия для выбора иконки в зависимости от скорости
+          if (speed >= 120 && speed <= 121) {
                 iconUrl = 'supercam.png';
             } else if (speed > 120 && speed <= 170) {
                 iconUrl = 'shahed.png';
             } else if (speed >= 7559 && speed < 7560) {
                 iconUrl = 'iskander.png';
                 shiftedClass = 'shifted-info-container';
-                iconSize = 'iconSizeLarge';
             } else if (speed >= 950 && speed <= 951) {
                 iconUrl = 'kalibr.png';
                 shiftedClass = 'shifted-info-container';
@@ -784,12 +783,12 @@ map.on("geosearch/showlocation", async function (e) {
             } else if (speed >= 1049 && speed <= 1050) {
                 shiftedClass = 'shifted-info-container';
                 iconUrl = 'Kh-59.png';
-            } else if (speed >= 90 && speed <= 95) {
-                iconUrl = 'shahed.png';
+            } else if (speed >= 80 && speed <= 85) {
+                iconUrl = 'parodia.png';
             } else if (speed >= 290 && speed <= 291) {
                 iconUrl = 'Lancet.png';
-            } else if (speed >= 102 && speed <= 108) {
-                iconUrl = 'shahed.png';
+            } else if (speed >= 98 && speed <= 99) {
+                iconUrl = 'gerbera.png';
             } else if (speed >= 100 && speed <= 101) {
                 iconUrl = 'ZZala.png';
             } else if (speed >= 4500 && speed <= 4501) {
@@ -836,6 +835,8 @@ map.on("geosearch/showlocation", async function (e) {
                 shiftedClass = 'shifted-info-container';
             } else if (speed >= 1100 && speed <= 1101) {
                 iconUrl = 'su-24.png';
+            } else if (speed >= 1102 && speed <= 1103) {
+                iconUrl = 'su-24 BLR.png';
                 iconClass = 'blue-id';
             } else if (speed >= 1002 && speed <= 1003) {
                 iconUrl = 'f-16.png';
