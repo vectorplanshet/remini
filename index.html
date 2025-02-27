@@ -820,6 +820,7 @@ map.on("geosearch/showlocation", async function (e) {
         shiftedClass = 'shifted-info-container';
     } else if (speed >= 1000 && speed <= 1001) {
         iconUrl = 'x101.png';
+        shiftedClass = 'shifted-info-container';
     } else if (speed >= 898 && speed <= 899) {
         iconUrl = 'kab.png';
     } else if (speed >= 11024 && speed <= 11025) {
@@ -906,7 +907,23 @@ map.on("geosearch/showlocation", async function (e) {
     } else if (speed >= 2300 && speed <= 2301) {
         iconUrl = 'Tu-22M3.png';
     } else if (speed >= 952 && speed <= 953) {
-        iconUrl = 'Su25.png';
+         iconUrl = 'Su25.png';
+    } else if (speed >= 954 && speed <= 955) {
+        iconUrl = 'Su25 BLR.png';
+        iconClass = 'blue-id';  
+    } else if (speed >= 850 && speed <= 851) {
+        iconUrl = 'mig-29 BLR.png';
+        iconClass = 'blue-id';  
+    } else if (speed >= 961 && speed <= 962) {
+         iconUrl = 'kh-35.png';
+         shiftedClass = 'shifted-info-container';
+    } else if (speed >= 3180 && speed <= 3181) {
+        iconUrl = 'oniks.png';
+        shiftedClass = 'shifted-info-container';
+    } else if (speed >= 500 && speed <= 501) {
+        iconUrl = 'shahed 238.png';
+    } else if (speed >= 2400 && speed <= 2450) {
+        iconUrl = 'mig-31.png';
     } else if (speed >= 1110 && speed <= 1111) {
         iconUrl = 'mirage.png';
         iconClass = 'blue-id';  
@@ -920,14 +937,13 @@ map.on("geosearch/showlocation", async function (e) {
         <div class="icon-container ${iconClass}">
             <img src="${iconUrl}" class="icon" />
              <div class="info-container ${shiftedClass} ${shiftedClasss}">
-                <span class="label-container ${iconClass}">${objectId}</span>
-                <span class="r-container ${iconClass}">ПП</span>
-                <span class="rls-container ${iconClass}">${speed}</span> <!-- РЛС -->
+                <span class="label-container ${iconClass}">${objectId}р.</span>
+                 <span class="r-container ${iconClass}">ПП</span>
+                <span class="rls-container ${iconClass}">${getRlsForObject(objectId, iconUrl)}</span> <!-- РЛС -->
             </div>
         </div>
     `;
 }
-
                     const icon = L.divIcon({
                         className: 'icon',
                         html: iconHtml,
