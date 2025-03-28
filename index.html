@@ -16,8 +16,19 @@
     src="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.js"
     integrity="sha384-8SqKZR7V8uOetpjjbcNJHvwuHpb074WS0UXjCLhzfJUqYn3B/uWx1WVv5mwRp1mV"
     crossorigin="anonymous"
+    
 ></script>
-
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.css"
+    integrity="sha384-P9DABSdtEY/XDbEInD3q+PlL+BjqPCXGcF8EkhtKSfSTr/dS5PBKa9+/PMkW2xsY"
+    crossorigin="anonymous"
+/>
+<script
+    src="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.js"
+    integrity="sha384-8SqKZR7V8uOetpjjbcNJHvwuHpb074WS0UXjCLhzfJUqYn3B/uWx1WVv5mwRp1mV"
+    crossorigin="anonymous"
+></script>
     <style>
         /* General Map Styles */
         #map {
@@ -523,7 +534,7 @@
         
 // Основной слой карты (OSM)
 const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZwoom: 19,
     attribution: '© OpenStreetMap contributors'
 });
 
@@ -794,7 +805,7 @@ setTimeout(() => {
     // Условия для выбора иконки в зависимости от скорости
     if (speed >= 120 && speed <= 121) {
         iconUrl = 'supercam.png';
-    } else if (speed > 120 && speed <= 170) {
+    } else if (speed > 120 && speed <= 200) {
         iconUrl = 'shahed.png';
     } else if (speed >= 7559 && speed < 7560) {
         iconUrl = 'iskander.png';
@@ -849,7 +860,7 @@ setTimeout(() => {
         iconUrl = 'lutiy.png';
         iconClass = 'blue-id';
         lineColor = '#006aff';  // Set blue line color for blue objects
-    } else if (speed >= 200 && speed <= 201) {
+    } else if (speed >= 201 && speed <= 202) {
         iconUrl = 'beaver.png';
         iconClass = 'blue-id';
         lineColor = '#006aff';  // Set blue line color for blue objects
@@ -1194,34 +1205,6 @@ document.getElementById('alert-button').onclick = function() {
     document.getElementById('alert-menu').style.display = menuVisible ? 'block' : 'none';
 };
 
-const iconElement = document.querySelector('.icon-container .icon');
-        function getKievTime() {
-    const options = {
-        timeZone: 'Europe/Kiev',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false // 24-часовой формат
-    };
-    return new Intl.DateTimeFormat('ru-RU', options).format(new Date());
-}
-
-let objectIdCounter = 564100;
-
-function getNextObjectId() {
-    return objectIdCounter++;
-
-
-    const iconHTML = `
-        <div class="icon-container ${iconClass}">
-            <img src="${iconUrl}" class="icon" />
-            <div class="info-container ${shiftedClass}">
-                <span class="label-container ${iconClass}">${objectId} ${minskTime}</span>
-                <span class="r-container ${iconClass}">ЕПВО</span>
-            </div>
-        </div>
-    `;
-    return iconHTML;
-}
 
     </script>
 </body>
