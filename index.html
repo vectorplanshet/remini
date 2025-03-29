@@ -1204,6 +1204,33 @@ document.getElementById('alert-button').onclick = function() {
     menuVisible = !menuVisible;
     document.getElementById('alert-menu').style.display = menuVisible ? 'block' : 'none';
 };
+function getKievTime() {
+    const options = {
+        timeZone: 'Europe/Kiev',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false // 24-часовой формат
+    };
+    return new Intl.DateTimeFormat('ru-RU', options).format(new Date());
+}
+
+let objectIdCounter = 564100;
+
+function getNextObjectId() {
+    return objectIdCounter++;
+
+
+    const iconHTML = `
+        <div class="icon-container ${iconClass}">
+            <img src="${iconUrl}" class="icon" />
+            <div class="info-container ${shiftedClass}">
+                <span class="label-container ${iconClass}">${objectId} ${minskTime}</span>
+                <span class="r-container ${iconClass}">ЕПВО</span>
+            </div>
+        </div>
+    `;
+    return iconHTML;
+}
 
 
     </script>
